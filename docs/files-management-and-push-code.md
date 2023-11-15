@@ -31,7 +31,7 @@ Khi bạn chạy `git status`, Git sẽ hiển thị các thông tin như:
 
 ![1696263788123](image/files-management-and-push-code/1696263788123.png "Thông báo trạng thái hiện tại là đã commit nhưng chưa push lên remote")
 
-- Câu lệnh sau sẽ liệt kê các cmit đã được tạo nhưng chưa đẩy lên remote repository:
+- Câu lệnh sau sẽ liệt kê các commit đã được tạo nhưng chưa đẩy lên remote repository:
 
 ```bash
 git log origin/main..HEAD
@@ -61,12 +61,6 @@ git restore --staged . // Đưa tất cả các file từ Staging area quay tr�
 
 ```bash
 git commit -m "Message"
-```
-
-- Nếu ta lỡ thực hiện tạo commit và giờ muốn hủy. Lúc này tất cả các file sẽ được đưa trở lại **Working directory** :
-
-```bash
-git reset HEAD~1
 ```
 
 ## Push
