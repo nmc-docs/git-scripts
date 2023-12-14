@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Khởi tạo git cho projectaaaa
+# Khởi tạo git cho project
 
 - Việc đầu tiên khi ta muốn liên kết với **Remote repository** thì ta phải khởi tạo git trong thư mục dự án của chúng ta trước.
 
