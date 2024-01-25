@@ -6,10 +6,16 @@ sidebar_position: 8
 
 ## Git pull
 
-- Câu lệnh sau sẽ kéo toàn bộ thay đổi mới nhất từ nhánh ở **Remote** về nhánh cùng tên ở **Local** :
+- Câu lệnh sau sẽ tự động xác định **Remote** branch tương ứng với branch hiện tại ở **Local** và thực hiện merge:
 
 ```bash
 git pull
+```
+
+- Câu lệnh sau sẽ merge nhánh được chỉ định ở **Remote** về nhánh hiện tại ở **Local**:
+
+```bash
+git pull origin <remote_branch_name>
 ```
 
 ## Git merge
