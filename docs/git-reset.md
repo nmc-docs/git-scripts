@@ -22,13 +22,31 @@ git reflog
 
 ## Git reset
 
-- Git reset được dùng để quay trở lại commit trước đó trong lịch sử commit của repository hoặc quay trở lại trạng thái tham chiếu của con trỏ HEAD.
+- Git reset được dùng để:
+  - Quay trở lại commit trước đó trong lịch sử commit của repository
+  - Quay trở lại trạng thái tham chiếu của con trỏ HEAD.
 - Cú pháp
 
 ```bash
-git reset <commit_hash>/HEAD@{n}
-git reset --soft <commit_hash>/HEAD@{n}
-git reset --hard <commit_hash>/HEAD@{n}
+git reset <commit_hash>
+git reset --soft <commit_hash>
+git reset --hard <commit_hash>
+```
+
+:::info
+
+- Ngoài ra, thay vì chỉ định commit hash, ta có thể dùng **HEAD~n** để quay trở lại "n" commit trước so với commit hiện tại, ví dụ, lệnh sau sẽ quay trở lại 3 commit trước đó:
+
+```bash
+git reset HEAD~3
+```
+
+:::
+
+```bash
+git reset HEAD@{n}
+git reset --soft HEAD@{n}
+git reset --hard HEAD@{n}
 ```
 
 - Sự khác biệt:
@@ -36,3 +54,17 @@ git reset --hard <commit_hash>/HEAD@{n}
 | git reset                                                                                                                                   | git reset --soft                                                                                                                       | git reset --hard                                                                                                                                                                                  |
 | ------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Di chuyển đến commit hoặc tham chiếu HEAD cụ thể. Tất cả các file thay đổi sau commit này vẫn sẽ được giữ nguyên trong**Working Directory** | Di chuyển đến commit hoặc tham chiếu HEAD cụ thể. Tất cả các file thay đổi sau commit này vẫn sẽ được giữ nguyên trong**Staging Area** | Di chuyển đến commit hoặc tham chiếu HEAD cụ thể. Tất cả các file thay đổi sau commit này sẽ bị**XÓA SẠCH**, đồng nghĩa với việc đưa thư mục làm việc quay trở lại trạng thái y hệt như commit đó |
+
+:::note
+
+- Sau khi reset về commit trước đó, ta chỉnh sửa và sau đó tạo commit mới và muốn push lên remote, hãy dùng lệnh:
+
+```bash
+git push --force
+```
+
+- Lưu ý rằng tất cả các commit sau đó sẽ bị ghi đè bởi commit ta vừa mới push lên remote.
+
+![1710054526478](image/git-reset/1710054526478.png)
+
+:::

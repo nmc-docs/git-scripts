@@ -31,14 +31,6 @@ Khi bạn chạy `git status`, Git sẽ hiển thị các thông tin như:
 
 ![1696263788123](image/files-management-and-push-code/1696263788123.png "Thông báo trạng thái hiện tại là đã commit nhưng chưa push lên remote")
 
-- Câu lệnh sau sẽ liệt kê các commit đã được tạo nhưng chưa đẩy lên remote repository:
-
-```bash
-git log origin/main..HEAD
-```
-
-![1698568677212](image/files-management-and-push-code/1698568677212.png)
-
 ## Đưa file vào Staging area
 
 - Để đưa file đã được thay đổi vào **Staging area** , ta dùng lệnh sau:
