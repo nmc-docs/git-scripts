@@ -67,4 +67,6 @@ git push --force
 
 ![1710054526478](image/git-reset/1710054526478.png)
 
+- Lúc này, lịch sử commit trên remote repository sẽ giống với lịch sử commit khi ta dùng lệnh **git log --oneline**
+
 :::

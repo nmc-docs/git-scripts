@@ -2,11 +2,13 @@
 sidebar_position: 11
 ---
 
-# Git log
+# Git log / Git reflog
 
-## Xem thông tin tất cả các commit
+## Git log
 
-- Ta sử dụng lệnh sau để xem tất cả các commit cho đến trạng thái hiện tại mà con trỏ HEAD đang trỏ đến, thông tin mỗi commit sẽ hiển thị trên một dòng:
+### Xem thông tin tất cả các commit
+
+- Ta sử dụng lệnh sau để xem tất cả các commit cho đến trạng thái hiện tại mà con trỏ HEAD đang trỏ đến của nhánh hiện tại ở local repository, thông tin mỗi commit sẽ hiển thị trên một dòng:
 
 ```bash
 git log --oneline
@@ -14,27 +16,9 @@ git log --oneline
 
 ![1700066732125](image/git-log/1700066732125.png)
 
-- Nếu muốn hiển thị chi tiết thông tin của tất cả commit:
+### So sánh lịch sử commit ở remote repository với con trỏ HEAD hiện tại ở local repository
 
-```bash
-git log
-```
-
-## Xem thông tin chi tiết của một commit
-
-```bash
-git show <commit_hash>
-```
-
-:::note
-
-- Lưu ý: sử dụng từ 4 ký tự trở lên cho mã commit hash
-
-:::
-
-![1700066780706](image/git-log/1700066780706.png)
-
-## Xem thông tin tất cả các commit được tạo nhưng chưa đẩy lên remote repository
+- Ví dụ:
 
 ```bash
 git log origin/main..HEAD
@@ -59,3 +43,24 @@ Khi chạy lệnh `git log origin/main..HEAD`, Git sẽ hiển thị danh sách 
 - Tùy thuộc vào tên remote repository (**origin**) và nhánh trên remote (**main**) mà điều chỉnh tên cho phù hợp.
 
 :::
+
+### Xem tất cả các commit (kể cả commit đã bị xóa) của tất cả các nhánh
+
+```bash
+git log --reflog --oneline
+```
+
+## Git reflog
+
+- Lệnh **git reflog** dùng để xem thông tin tham chiếu hiện tại của con trỏ HEAD, lịch sử commit, checkout,...
+- Câu lệnh xem lịch sử tham chiếu của tất cả các nhánh:
+
+```bash
+git reflog
+```
+
+- Câu lệnh xem lịch sử tham chiếu của một nhánh cụ thể:
+
+```bash
+git reflog show [branch_name]
+```
