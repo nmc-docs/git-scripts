@@ -59,6 +59,17 @@ git log --reflog --oneline
 git reflog
 ```
 
+![1716138146775](image/git-log-reflog/1716138146775.png)
+
+:::info
+
+- **HEAD --> main**: con trỏ HEAD hiện tại đang đứng ở nhánh main, ở commit b56fa45
+- **origin/main**: commit mới nhất trên nhánh main ở remote repository là b56fa45
+- **origin/develop/feature6** (chữ đỏ): commit mới nhất trên nhánh develop/feature6 ở remote repository là af8d199
+- **develop/feature6** (chữ xanh): commit mới nhất mà con trỏ HEAD sẽ đứng khi checkout sang nhánh này là af8d199
+
+:::
+
 - Câu lệnh xem lịch sử tham chiếu của một nhánh cụ thể:
 
 ```bash
