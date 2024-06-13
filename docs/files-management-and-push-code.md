@@ -67,7 +67,7 @@ git push -u origin <branch_name>
 
 Trong đó:
 
-- **<branch_name>** : tên nhánh ở remote repository mà code sẽ được đẩy lên. Nếu nhánh này chưa có ở remote repository thì nó sẽ được tự động tạo.
+- **\<branch_name\>** : tên nhánh ở remote repository mà code sẽ được đẩy lên. Nếu nhánh này chưa có ở remote repository thì nó sẽ được tự động tạo.
 
 :::
 

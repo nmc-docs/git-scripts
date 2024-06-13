@@ -35,10 +35,10 @@ git checkout -b <name_of_new_branch> <base_branch_name>
 
 Trong đó:
 
-- **<name_of_new_branch>** : tên của nhánh mới sẽ tạo
-- **<base_branch>** : là tên của nhánh mà nhánh mới sẽ được tạo dựa trên nhánh này (Tùy chọn).
+- **\<name_of_new_branch\>** : tên của nhánh mới sẽ tạo
+- **\<base_branch\>** : là tên của nhánh mà nhánh mới sẽ được tạo dựa trên nhánh này (Tùy chọn).
 
-Nếu **<base_branch>** không được chỉ định thì sẽ tạo nhánh mới dựa trên nhánh hiện tại ta đang đứng.
+Nếu \< base_branch \> không được chỉ định thì sẽ tạo nhánh mới dựa trên nhánh hiện tại ta đang đứng.
 
 :::
 
@@ -59,8 +59,8 @@ git branch -m <old_branch_name> <new_branch_name>
 
 Trong đó:
 
-- **<old_branch_name>** : tên nhánh hiện tại muốn đổi tên
-- **<new_branch_name>** : tên mới muốn đổi
+- **\<old_branch_name\>** : tên nhánh hiện tại muốn đổi tên
+- **\<new_branch_name\>** : tên mới muốn đổi
 
 :::
 
@@ -105,7 +105,7 @@ git checkout <commit_hash>
 
 :::caution
 
-- Sau khi thực hiện lệnh `git checkout <commit_hash>`, **HEAD** trỏ tới một commit có mã <commit_hash> tương ứng, nó sẽ ở trong trạng thái "detached HEAD". Trong trạng thái này, ta không thể thực hiện các thao tác commit trực tiếp. Mọi thay đổi mới sẽ không thuộc bất kỳ branch nào và có thể bị mất khi ta chuyển đổi branch hoặc thực hiện các thao tác khác.
+- Sau khi thực hiện lệnh `git checkout <commit_hash>`, **HEAD** trỏ tới một commit có mã \<commit_hash\> tương ứng, nó sẽ ở trong trạng thái "detached HEAD". Trong trạng thái này, ta không thể thực hiện các thao tác commit trực tiếp. Mọi thay đổi mới sẽ không thuộc bất kỳ branch nào và có thể bị mất khi ta chuyển đổi branch hoặc thực hiện các thao tác khác.
 - Để quay lại trạng thái bình thường và tiếp tục làm việc trên một branch, ta nên tạo một branch mới từ commit đó.
 
 :::
