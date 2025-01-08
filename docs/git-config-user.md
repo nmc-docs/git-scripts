@@ -38,20 +38,24 @@ ssh-keygen -t ed25519 -C "YOUR_GITHUB_EMAIL"
 ---> Enter file in which to save the key (/c/Users/MINH CHI/.ssh/id_ed25519): id_rsa_minhchi1509_github
 ```
 
-- Ở đoạn nhập tên file cho SSH Key này, hãy nhập theo định dạng: **id*rsa*[GITHUB_USERNAME]\_[GIT_PROVIDER]**
+- Ở đoạn nhập tên file cho SSH Key này, hãy nhập theo định dạng: **id_rsa\_[GIT_USERNAME]\_[GIT_PROVIDER]**
 - Tiếp theo nó sẽ bắt ta nhập passphrase, ta bỏ qua bằng cách ấn Enter.
 
 ###### Bước 4: Chạy lệnh sau:
 
 ```bash
+eval "$(ssh-agent -s)"
+```
+
+```bash
 ssh-add ~/.ssh/id_rsa_minhchi1509_github
 ```
 
-- Đây là lệnh dùng để thêm một SSH private key vào **ssh-agent** (trình quản lý các SSH key). Khi thêm vào ssh-agent, ta sẽ không cần nhập mật khẩu cho key mỗi khi sử dụng, giúp quá trình xác thực SSH trở nên tiện lợi hơn.
+- Đây là lệnh dùng để thêm một SSH private key vào **ssh-agent** (trình quản lý các SSH key). Khi thêm vào **ssh-agent**, ta sẽ không cần nhập mật khẩu cho key mỗi khi sử dụng, giúp quá trình xác thực SSH trở nên tiện lợi hơn.
 - Lưu ý hãy thay lại tên file SSH Key cho đúng như đã cấu hình như ở **Bước 3**
 - Để kiểm tra xem SSH private key đã được add vào **ssh-agent** hay chưa, gõ lệnh:
   ```bash
-  eval "$(ssh-agent -s)" && ssh-add -l
+  ssh-add -l
   ```
 
 ###### Bước 5: Tạo SSH Key trên Github/Gitlab
@@ -59,7 +63,7 @@ ssh-add ~/.ssh/id_rsa_minhchi1509_github
 - Đối với Github, vào: https://github.com/settings/keys và bấm "New SSH Key"
 - Đối với Gitlab, vào: https://gitlab.com/-/user_settings/ssh_keys và bấm "Add new key"
 - Đặt Title cho hợp lý
-- Phần key, vào thư mục ~/.ssh, mở file Public SSH Key tương ứng (file có đuôi **.pub**), copy và paste đoạn key đó vào
+- Phần key, vào thư mục **~/.ssh**, mở file Public SSH Key tương ứng (file có đuôi **.pub**), copy và paste đoạn key đó vào
 - Bấm "Add SSH Key" (Github) hoặc "Add key" (Gitlab)
 
 :::note
