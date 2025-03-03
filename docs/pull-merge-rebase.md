@@ -9,13 +9,13 @@ sidebar_position: 8
 - Câu lệnh sau sẽ tự động xác định **Remote** branch tương ứng với branch hiện tại ở **Local** và thực hiện merge:
 
 ```bash
-git pull
+git pull --rebase
 ```
 
 - Câu lệnh sau sẽ merge nhánh được chỉ định ở **Remote** về nhánh hiện tại ở **Local**:
 
 ```bash
-git pull origin <remote_branch_name>
+git pull --rebase origin <remote_branch_name>
 ```
 
 ## Git merge
