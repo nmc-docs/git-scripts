@@ -55,6 +55,18 @@ git restore --staged . // Đưa tất cả các file từ Staging area quay tr�
 git commit -m "Message"
 ```
 
+:::tip
+
+- Để commit mà bỏ qua các hook như pre-commit (check ESLint), ta dùng lệnh:
+
+```bash
+git commit -m "Your commit message" --no-verify
+```
+
+> ⚠️ **Lưu ý** : Hạn chế dùng `--no-verify` trong dự án lớn hoặc làm việc nhóm trừ khi thực sự cần thiết, vì nó có thể bỏ qua các bước kiểm tra quan trọng (ESLint, test unit, lint-staged,...).
+
+:::
+
 ## Push
 
 - Sau khi đã thực hiện add và commit xong, ta có thể đẩy code lên **Remote repository** thông qua câu lệnh sau:
