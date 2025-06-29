@@ -34,7 +34,7 @@ git merge --abort
 
 ## Git rebase
 
-- Cũng giống như `git merge`, `git rebase` cũng dùng để hợp nhất một nhánh khác vào nhánh hiện tại
+- Lệnh `git rebase` trong Git được dùng để **tái sắp xếp lại lịch sử commit** bằng cách **di chuyển một chuỗi commit lên một base mới**. Nói đơn giản hơn, nó giống như “dán lại” các commit của ta lên một nền tảng khác (ví dụ như một nhánh mới), thay vì trộn commit như `merge`.
 - Cú pháp:
 
 ```bash
@@ -53,7 +53,25 @@ git rebase --continue
 git rebase --abort
 ```
 
-# Sự khác nhau giữa Git rebase và Git merge
+- Ví dụ: Giả sử ta đang làm việc trên nhánh `feature` và muốn cập nhật những thay đổi mới nhất từ nhánh `main`.
+
+```bash
+git checkout feature
+git rebase main
+```
+
+→ Git sẽ lấy toàn bộ các commit mới nhất từ `main`, sau đó “phát lại” các commit trên `feature` lên trên `main`.
+
+:::caution[Lưu ý quan trọng]
+
+`git rebase` **thay đổi lịch sử commit**, vì thế:
+
+- **Không nên rebase** các nhánh đã **đẩy lên remote** mà **nhiều người đang dùng**.
+- Nếu rebase rồi, ta cần dùng `git push --force` để đẩy lại (vì lịch sử đã thay đổi).
+
+:::
+
+## Sự khác nhau giữa Git rebase và Git merge
 
 | Git rebase                                                                                                                                          | Git merge                                                                                                                            |
 | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
@@ -69,11 +87,56 @@ git rebase --abort
 
 => Ta có thể thấy khi sử dụng `git rebase`, tất cả các commit từ nhánh **develop** sẽ được "gom" vào làm một nhóm với nhau, trong khi sử dụng `git rebase`, các commit của cả 2 nhánh sẽ được sắp xếp theo thời gian commit (gây lộn xộn các commit giữa 2 nhánh với nhau).
 
-:::tip
+## Chỉnh sửa lịch sử commit với `git rebase -i`
 
-- Thông thường ta nên sử dụng `git rebase` để hợp nhất nhánh, vì lịch sử commit sẽ "clean" hơn do nó sắp xếp các commit theo nhánh sau khi hợp nhất các nhánh với nhau, giúp cho việc tìm commit của mình dễ dàng hơn khi làm việc với người khác.
-- Vẫn bài toán trên, dưới đây là hình ảnh khi sử dụng `git rebase` để gộp nhánh **develop** vào nhánh **master** và ngược lại:
+- Lệnh `git rebase -i` (viết tắt của `git rebase --interactive`) được dùng để **tương tác và chỉnh sửa lịch sử commit** trong Git. Đây là một công cụ mạnh mẽ giúp ta làm "đẹp" lại lịch sử commit trước khi đẩy code lên repository chung (như GitHub, GitLab...).
+- Ta có thể:
 
-![1700068015437](image/pull-merge-rebase/1700068015437.png)
+| Hành động | Mô tả                                                                 |
+| --------- | --------------------------------------------------------------------- |
+| `pick`    | Giữ nguyên commit                                                     |
+| `reword`  | Sửa**message**của commit                                              |
+| `edit`    | Sửa**nội dung**commit (thêm, xoá file...)                             |
+| `squash`  | Gộp commit hiện tại với commit trước đó, giữ message của commit trước |
+| `fixup`   | Gộp commit hiện tại vào commit trước đó,**bỏ**message hiện tại        |
+| `drop`    | Xoá bỏ commit                                                         |
 
-:::
+- Giả sử ta có lịch sử commit như sau (đã push lên remote):
+
+![1751176940519](image/pull-merge-rebase/1751176940519.png)
+
+- Giờ ta muốn sửa từ commit **"Feature10"** trở đi, ta `rebase -i` về commit hash của **"Feature9"**:
+
+```bash
+git rebase -i a8473ea
+```
+
+![1751177202578](image/pull-merge-rebase/1751177202578.png)
+
+- Bây giờ, ta muốn:
+  - Xóa commit **"Feature13"**
+  - Sửa commit message **"Feature10"** thành **"Feature10 Update"**
+  - Gộp commit **"Feature11"** và **"Feature12"** và đổi tên message thành **"Merge Feature11,12"**
+- Ta nhấn **"i"** (insert) để bật chế độ chỉnh sửa, sau khi sửa xong, nhấn **"Esc"** và gõ **":wq"** và cuối cùng ấn **"Enter"**
+
+![1751177953660](image/pull-merge-rebase/1751177953660.png)
+
+- Gõ message mới cho commit **"Feature10"**:
+
+![1751178115728](image/pull-merge-rebase/1751178115728.png)
+
+- Gõ message mới sau khi gộp 2 commit **"Feature11"** + **"Feature12"**
+
+![1751178414261](image/pull-merge-rebase/1751178414261.png)
+
+![1751178433458](image/pull-merge-rebase/1751178433458.png)
+
+- Sau khi chỉnh xong, ta đẩy lại lên remote bằng lệnh:
+
+```bash
+git push -f
+```
+
+- Kết quả:
+
+![1751178500045](image/pull-merge-rebase/1751178500045.png)
