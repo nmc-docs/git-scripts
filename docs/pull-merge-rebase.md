@@ -95,10 +95,10 @@ git rebase main
 | Hành động | Mô tả                                                                 |
 | --------- | --------------------------------------------------------------------- |
 | `pick`    | Giữ nguyên commit                                                     |
-| `reword`  | Sửa**message**của commit                                              |
-| `edit`    | Sửa**nội dung**commit (thêm, xoá file...)                             |
+| `reword`  | Sửa **message** của commit                                            |
+| `edit`    | Sửa **nội dung** commit (thêm, xoá file...)                           |
 | `squash`  | Gộp commit hiện tại với commit trước đó, giữ message của commit trước |
-| `fixup`   | Gộp commit hiện tại vào commit trước đó,**bỏ**message hiện tại        |
+| `fixup`   | Gộp commit hiện tại vào commit trước đó, **bỏ** message hiện tại      |
 | `drop`    | Xoá bỏ commit                                                         |
 
 - Giả sử ta có lịch sử commit như sau (đã push lên remote):
