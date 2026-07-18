@@ -27,6 +27,32 @@ git stash list
 git stash
 ```
 
+- Mặc định thì `git stash` **chỉ stash những thay đổi của các file đã được Git theo dõi (tracked files)** , bao gồm:
+  - ✅ File đã tồn tại và bị sửa (`modified`)
+  - ✅ File đã được `git add` (staged)
+
+**Nhưng không stash các file mới chưa được theo dõi (`untracked`)** và cũng không stash các file bị ignore.
+
+- Để stash cả những file mới (`untracked`):
+
+```Shell
+git stash -u
+```
+
+- Để stash cả những file bị `.gitignore`:
+
+```Shell
+git stash -a
+```
+
+- Tóm lại:
+
+| Lệnh           | Modified | Staged | Untracked | Ignored |
+| -------------- | -------- | ------ | --------- | ------- |
+| `git stash`    | ✅       | ✅     | ❌        | ❌      |
+| `git stash -u` | ✅       | ✅     | ✅        | ❌      |
+| `git stash -a` | ✅       | ✅     | ✅        | ✅      |
+
 ## Apply stash
 
 - Để apply một stash cụ thể chứa các thay đổi vào nhánh hiện tại, ta dùng lệnh sau:
